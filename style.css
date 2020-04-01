@@ -40,3 +40,12 @@ h4 {
   margin: 0;
   text-transform: uppercase;
 }
+
+.inc-exp-container {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
