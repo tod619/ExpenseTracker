@@ -19,6 +19,40 @@ let transactions = dummyTransactions;
 
 // Functions
 
+// Add Transaction
+function addTransaction(e) {
+  e.preventDefault();
+
+  // Check to be sure that no value is empty
+  if (text.value.trim() === "" || amount.value.trim() === "") {
+    alert("Please add text and an amount");
+  } else {
+    const transaction = {
+      id: generateID(),
+      text: text.value,
+      amount: +amount.value
+    };
+
+    //push to transactions array
+    transactions.push(transaction);
+
+    // Add Transaction to the DOM
+    addTransactionDOM(transaction);
+
+    // Update values
+    updateValues();
+
+    // Clear inputs
+    text.value = "";
+    amount.value = "";
+  }
+}
+
+// Generate Random ID
+function generateID() {
+  return Math.floor(Math.random() * 100000000);
+}
+
 // Add transactions to the DOM
 function addTransactionDOM(transaction) {
   // Get the amounnt sign
@@ -70,5 +104,8 @@ function init() {
   transactions.forEach(addTransactionDOM);
   updateValues();
 }
+
+// Add EventListners
+form.addEventListener("submit", addTransaction);
 
 init();
